@@ -118,7 +118,7 @@ class STFT(torch.nn.Module):
             window_sum = window_sumsquare(
                 self.window, magnitude.size(-1), hop_length=self.hop_length,
                 win_length=self.win_length, n_fft=self.filter_length,
-                dtype=np.float32)
+                dtype=np.float64)
             # remove modulation effects
             approx_nonzero_indices = torch.from_numpy(
                 np.where(window_sum > tiny(window_sum))[0])

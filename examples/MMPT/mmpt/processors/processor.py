@@ -119,7 +119,7 @@ class Aligner(object):
             video_clips = {"start": [video_start], "end": [video_end]}
 
         vfeats = np.zeros(
-            (self.max_video_len, video_feature.shape[1]), dtype=np.float32
+            (self.max_video_len, video_feature.shape[1]), dtype=np.float64
         )
         vmasks = torch.zeros((self.max_video_len,), dtype=torch.bool)
         video_len = 0

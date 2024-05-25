@@ -37,7 +37,7 @@ def get_batches(directory, lang, prefix="all_avg_pool"):
 
 
 def load_batch(emb_file, dim):
-    embeddings = np.fromfile(emb_file, dtype=np.float32)
+    embeddings = np.fromfile(emb_file, dtype=np.float64)
     num_rows = int(embeddings.shape[0] / dim)
     embeddings = embeddings.reshape((num_rows, dim))
     faiss.normalize_L2(embeddings)
@@ -75,7 +75,7 @@ def knnGPU_sharded(x_batches_f, y_batches_f, dim, k, direction="x2y"):
         bsims = np.concatenate(bsims, axis=1)
         binds = np.concatenate(binds, axis=1)
         aux = np.argsort(-bsims, axis=1)
-        sim_batch = np.zeros((x_batch.shape[0], k), dtype=np.float32)
+        sim_batch = np.zeros((x_batch.shape[0], k), dtype=np.float64)
         ind_batch = np.zeros((x_batch.shape[0], k), dtype=np.int64)
         for i in range(x_batch.shape[0]):
             for j in range(k):

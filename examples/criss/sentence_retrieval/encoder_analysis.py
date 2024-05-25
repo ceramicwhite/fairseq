@@ -42,7 +42,7 @@ def load_embeddings(directory, LANGS):
         embedding_files = glob.glob(f"{lang_dir}/all_avg_pool.{lang}.*")
         for embed_file in embedding_files:
             shard_id = embed_file.split(".")[-1]
-            embeddings = np.fromfile(embed_file, dtype=np.float32)
+            embeddings = np.fromfile(embed_file, dtype=np.float64)
             num_rows = embeddings.shape[0] // DIM
             embeddings = embeddings.reshape((num_rows, DIM))
 

@@ -109,7 +109,7 @@ def get_dummy_encoder_output(encoder_out_shape=(100, 80, 5)):
     encoder_out = {}
 
     encoder_out["encoder_out"] = torch.from_numpy(
-        np.random.randn(*encoder_out_shape).astype(np.float32)
+        np.random.randn(*encoder_out_shape).astype(np.float64)
     )
     seq_lengths = torch.from_numpy(np.random.randint(low=1, high=T, size=B))
     # some dummy mask

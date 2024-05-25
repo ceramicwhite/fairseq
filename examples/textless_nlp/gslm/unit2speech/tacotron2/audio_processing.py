@@ -5,7 +5,7 @@ import librosa.util as librosa_util
 
 
 def window_sumsquare(window, n_frames, hop_length=200, win_length=800,
-                     n_fft=800, dtype=np.float32, norm=None):
+                     n_fft=800, dtype=np.float64, norm=None):
     """
     # from librosa 0.6
     Compute the sum-square envelope of a window function at a given hop length.
@@ -65,7 +65,7 @@ def griffin_lim(magnitudes, stft_fn, n_iters=30):
     """
 
     angles = np.angle(np.exp(2j * np.pi * np.random.rand(*magnitudes.size())))
-    angles = angles.astype(np.float32)
+    angles = angles.astype(np.float64)
     angles = torch.autograd.Variable(torch.from_numpy(angles))
     signal = stft_fn.inverse(magnitudes, angles).squeeze(1)
 

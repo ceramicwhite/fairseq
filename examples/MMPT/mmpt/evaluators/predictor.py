@@ -300,7 +300,7 @@ class CrossTaskPredictor(Predictor):
         assert logits.size() == (video_len, batch_logits.size(1)), "{}, {}".format(logits.size(), video_len)
 
         O = self.lsm(logits)
-        y = np.zeros(O.size(), dtype=np.float32)
+        y = np.zeros(O.size(), dtype=np.float64)
         dp(y, -O.detach().cpu().numpy())
         if task not in Y_pred:
             Y_pred[task] = {}

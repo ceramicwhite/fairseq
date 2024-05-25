@@ -204,7 +204,7 @@ def get_f0_by_filename(filename, tgt_sampling_rate):
 
     # compute un-interpolated f0, and use Ann's interp in __getitem__ if set
     f0 = get_f0(audio, rate=tgt_sampling_rate)
-    f0 = torch.from_numpy(f0.astype(np.float32))
+    f0 = torch.from_numpy(f0.astype(np.float64))
     return f0
 
 

@@ -73,7 +73,7 @@ class VectorRetriever(object):
         assert len(hidden_states) == len(video_ids), "{}, {}".format(
             str(len(hidden_states)), str(len(video_ids)))
         assert len(hidden_states.shape) == 2
-        assert hidden_states.dtype == np.float32
+        assert hidden_states.dtype == np.float64
 
         valid_idx = []
         for idx, video_id in enumerate(video_ids):

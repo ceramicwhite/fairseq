@@ -27,9 +27,9 @@ def get_avg_pool(
 
     # compute the encoder output for each beam
     encoder_outs = model.forward_encoder(encoder_input)
-    np_encoder_outs = encoder_outs[0].encoder_out.cpu().numpy().astype(np.float32)
+    np_encoder_outs = encoder_outs[0].encoder_out.cpu().numpy().astype(np.float64)
     encoder_mask = 1 - encoder_outs[0].encoder_padding_mask.cpu().numpy().astype(
-        np.float32
+        np.float64
     )
     encoder_mask = np.expand_dims(encoder_mask.T, axis=2)
     if has_langtok:

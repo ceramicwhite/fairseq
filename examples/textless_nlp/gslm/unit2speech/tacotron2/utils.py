@@ -26,7 +26,7 @@ def load_wav_to_torch(full_path, sr=None):
     data, sr = librosa.load(full_path, sr=sr)
     data = np.clip(data, -1, 1)  # potentially out of [-1, 1] due to resampling
     data = data * 32768.0  # match values loaded by scipy
-    return torch.FloatTensor(data.astype(np.float32)), sr
+    return torch.FloatTensor(data.astype(np.float64)), sr
 
 
 def read_binary_audio(bin_data, tar_sr=None):
@@ -46,7 +46,7 @@ def read_binary_audio(bin_data, tar_sr=None):
         tar_sr = ori_sr
     data = np.clip(data, -1, 1)
     data = data * 32768.0
-    return torch.FloatTensor(data.astype(np.float32)), tar_sr
+    return torch.FloatTensor(data.astype(np.float64)), tar_sr
 
 
 def load_filepaths_and_text(filename):
